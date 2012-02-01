@@ -1,0 +1,3 @@
+# Module eksigame
+# RPC service class, partial path of RPC policy file
+aykutsoysal.client.CoreService, DDACFA4A19DCDB249CE4D38EA6413397.gwt.rpc

@@ -1,0 +1,2 @@
+serviceClass: aykutsoysal.client.CoreService
+path: DDACFA4A19DCDB249CE4D38EA6413397.gwt.rpc

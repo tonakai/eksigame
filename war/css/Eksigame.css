@@ -1,0 +1,159 @@
+/** Add css rules here for your application. */
+.container {
+	font: normal 16px/1.8 "Open Sans", "Helvetica", "Arial", sans-serif;
+	color: dimGray;
+	text-align: left;
+}
+/** Example rules used by the template application (remove for your app) */
+h1 {
+	font-size: 2em;
+	color: #eeeeee;
+	margin: 10px 0px 10px;
+	text-align: left;
+}
+
+.gec_bunlari,.oluyo_gibi,.algeria_algeria,.budur_hocam {
+	font: normal 16px/1.8 "Open Sans", "Helvetica", "Arial", sans-serif;
+	border: 5px solid gainsboro;
+	border: 5px solid rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	height: 2.2em;
+	line-height: 27px;
+	margin: 11px 6px;
+	min-width: 54px;
+	padding: 0 8px;
+	text-align: center;
+}
+
+.gec_bunlari {
+	background-color: #3B8DBD;
+}
+
+.algeria_algeria {
+	background-color: #BD3B3B;
+}
+
+.oluyo_gibi {
+	background-color: #BDBD3B;
+}
+
+.budur_hocam {
+	background-color: #3BBD3B;
+}
+
+#baslikTextBox {
+	font: 1.25em "Open Sans", "Helvetica", "Arial", sans-serif;
+	width: 90%;
+	padding: 8px 15px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	border: 5px solid #3B8DBD;
+}
+
+#baslikPreviewLabel {
+	font: 1.5em "Open Sans", "Helvetica", "Arial", sans-serif;
+	letter-spacing: 0.2em;
+	font-weight: bold;
+}
+
+.gwt-Anchor {
+	display: block;
+	clear: both;
+}
+
+.header {
+	width: 100%;
+	background: #353535;
+	color: #ccc;
+}
+
+.footer {
+	width: 100%;
+	background: #353535;
+	color: #fff;
+}
+
+.footer a,.header a {
+	color: #ccc;
+	text-decoration: none;
+}
+
+#loading {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5),
+		to(#f1f1f1) );
+	background-image: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+	-webkit-border-radius: 2px;
+	-webkit-user-select: none;
+	background-color: whiteSmoke;
+	background-image: linear-gradient(top, #f5f5f5, #f1f1f1);
+	background-image: -o-linear-gradient(top, #f5f5f5, #f1f1f1);
+	border: 1px solid gainsboro;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 2px;
+	color: #666;
+	cursor: pointer;
+	font-weight: bold;
+	height: 2em;
+	line-height: 1.75em;
+	margin: 11px 6px;
+	min-width: 54px;
+	padding: 0 8px;
+	text-align: center;
+}
+
+#errorButton {
+	font: 1.25em "Open Sans", "Helvetica", "Arial", sans-serif;
+	background-color: #BD3B3B;
+	-webkit-border-radius: 2px;
+	border: 1px solid gainsboro;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	height: 2em;
+	line-height: 1.75em;
+	margin: 11px 6px;
+	min-width: 54px;
+	padding: 0 8px;
+	text-align: center;
+}
+
+a.correct,a.false,a.empty {
+	text-decoration: none;
+	color: #fff;
+	padding: 0px 5px;
+	margin: 2px;
+	display: block;
+}
+
+a.correct {
+	background-color: #3BBD3B;
+}
+
+a.false {
+	background-color: #BD3B3B;
+}
+
+a.empty {
+	background-color: #3B8DBD;
+}
+
+.gwt-PopupPanelGlass {
+	background-color: #000;
+	filter: alpha(opacity =   50);
+	opacity: 0.5;
+}
+
+.gwt-DialogBox {
+	background-color: #fff;
+}
+
+.gwt-DialogBox .Caption {
+	text-align: center;
+	font-size: 1.2em;
+}

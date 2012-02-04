@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Random;
 import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -12,6 +11,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
@@ -27,6 +28,7 @@ public class EksisozlukEntryFetcher implements EntryFetcher {
 	private static final String SELECTOR_BODY_STRING = "html body ol#el li";
 
 	private static final String BASE_URI_SHOW = "http://www.eksisozluk.com/show.asp?id=%d";
+	private static final String BASE_URI = "http://www.eksisozluk.com/";
 
 	public EksisozlukEntryFetcher() {
 	}
@@ -43,8 +45,7 @@ public class EksisozlukEntryFetcher implements EntryFetcher {
 
 		Elements ampul = null;
 		Document document = null;
-		int entryNo;
-		Random random = new Random();
+
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
@@ -57,8 +58,6 @@ public class EksisozlukEntryFetcher implements EntryFetcher {
 			});
 
 			do {
-				// entryNo = random.nextInt(25599493) + 1;
-				// String urlString = String.format(BASE_URI_SHOW, entryNo);
 
 				// sukela
 				String urlString = "http://www.eksisozluk.com/pick.asp?p=g";
@@ -68,8 +67,6 @@ public class EksisozlukEntryFetcher implements EntryFetcher {
 				connection.setRequestMethod("GET");
 				connection.setRequestProperty("Accept", "text/html");
 				connection.setRequestProperty("Accept-Charset", "utf-8");
-				// connection.setRequestProperty("Accept-Language",
-				// "en-US,en;q=0.8");
 				connection
 						.setRequestProperty("User-Agent",
 								"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.58 Safari/535.2");
@@ -77,23 +74,23 @@ public class EksisozlukEntryFetcher implements EntryFetcher {
 				connection.setRequestProperty("Content-Type", "text/html; charset=utf-8");
 				log.info("Content Type is " + connection.getContentType());
 
-				// InputStreamReader reader = new
-				// InputStreamReader(connection.getInputStream(), "utf-8");
 				document = Jsoup.parse(connection.getInputStream(), "utf-8", "http://www.eksisozluk.com");
-				// document = builder.parse(connection.getInputStream());
 
 				ampul = document.select("li.ampul");
 				if (ampul.isEmpty()) {
 					log.info("Entry bos: ");
 				}
-				// XPathExpression empty =
-				// xpath.compile("/html/body/ul/li[@class='ampul']");
-				// ampul = (Node) empty.evaluate(document, XPathConstants.NODE);
+
 			} while (!ampul.isEmpty());
 
-			// XPathExpression expr =
-			// xpath.compile("/html/body/h1[@class='title']");
-			// Node node = (Node) expr.evaluate(document, XPathConstants.NODE);
+			Elements links = document.select("a");
+			for (Element link : links) {
+				//not a good solution
+				if (!link.attr("href").startsWith("http")) {
+					link.attr("href", BASE_URI + link.attr("href"));
+				}
+				link.attr("target", "_blank");
+			}
 			String header = document.select("h1.title").first().text();
 			log.info(header);
 			sozlukEntry.setHeader(header);
@@ -114,9 +111,15 @@ public class EksisozlukEntryFetcher implements EntryFetcher {
 	}
 
 	private String extractEntry(Document document) {
-		String entry = null;
-		entry = document.select(SELECTOR_BODY_STRING).first().html();
-		return entry;
+		StringBuilder builder = new StringBuilder();
+		// entry = document.select(SELECTOR_BODY_STRING).first().html();
+		for (Node node : document.select(SELECTOR_BODY_STRING).first().childNodes()) {
+			if (node.attr("class").equalsIgnoreCase("aul")) {
+				break;
+			}
+			builder.append(node.toString());
+		}
+		return builder.toString();
 	}
 
 	private String extractYazar(Document document) {

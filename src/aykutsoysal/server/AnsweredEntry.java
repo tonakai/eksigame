@@ -1,7 +1,8 @@
 package aykutsoysal.server;
 
+import java.util.Date;
+
 import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -23,6 +24,9 @@ public class AnsweredEntry {
 
 	@Persistent
 	private boolean status;
+	
+	@Persistent
+	private Date answeredAt;
 
 	public Key getKey() {
 		return key;
@@ -68,5 +72,13 @@ public class AnsweredEntry {
 
 	public void setEntryKey(Key entryKey) {
 		this.entryKey = entryKey;
+	}
+
+	public Date getAnsweredAt() {
+		return answeredAt;
+	}
+
+	public void setAnsweredAt(Date answeredAt) {
+		this.answeredAt = answeredAt;
 	}
 }

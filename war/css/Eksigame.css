@@ -69,8 +69,14 @@ h1 {
 	width: 100%;
 	background: #353535;
 	color: #ccc;
+	
 }
-
+.header .row .col_12 {
+	background-image: url('../img/eksigame.png');
+	background-repeat: no-repeat;
+	background-position-y: 3px;
+	padding-left: 100px;
+}
 .footer {
 	width: 100%;
 	background: #353535;
